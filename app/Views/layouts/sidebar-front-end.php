@@ -191,30 +191,34 @@
                             </ul>
                         </li>
                     </ul>
-                    <a class="nav-link dropdown-indicator" href="#transaksi" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="transaksi">
-                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-money-bill-wave"></span></span><span class="nav-link-text ps-1">Payment Transaksi</span>
+                    <a class="nav-link dropdown-indicator <?= ($act == 'pay-bus' || $act == 'pay-kereta' || $act == 'pay-angkutan' || $act == 'pay-kapal' || $act == 'pay-pesawat') ? 'active' : '' ?>" href="#pay" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="pay">
+                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-shopping-cart"></span></span><span class="nav-link-text ps-1">Transaksi</span>
                         </div>
                     </a>
-                    <ul class="nav collapse false" id="transaksi">
-                        <li class="nav-item"><a class="nav-link dropdown-indicator" href="#pay-darat" data-bs-toggle="collapse" aria-expanded="false" aria-controls="forms">
+                    <ul class="nav collapse <?= ($act == 'pay-bus' || $act == 'pay-kereta' || $act == 'pay-angkutan' || $act == 'pay-kapal' || $act == 'pay-pesawat') ? 'show' : '' ?>" id="pay">
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-indicator <?= ($act == 'pay-bus' || $act == 'pay-kereta' || $act == 'pay-angkutan') ? 'active' : '' ?>" href="#pay-darat" data-bs-toggle="collapse" aria-expanded="false" aria-controls="pay">
                                 <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Transportasi Darat</span>
                                 </div>
                             </a>
                             <!-- more inner pages-->
-                            <ul class="nav collapse false" id="pay-darat">
-                                <li class="nav-item"><a class="nav-link" href="../modules/forms/basic/form-control.html" aria-expanded="false">
+                            <ul class="nav collapse <?= ($act == 'pay-bus' || $act == 'pay-kereta' || $act == 'pay-angkutan') ? 'show' : '' ?>" id="pay-darat">
+                                <li class="nav-item">
+                                    <a class="nav-link <?= ($act == 'pay-bus') ? 'active' : '' ?>" href="<?= base_url('admin/transaksi/bus') ?>" aria-expanded="false">
                                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Bus</span>
                                         </div>
                                     </a>
                                     <!-- more inner pages-->
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="../modules/forms/basic/input-group.html" aria-expanded="false">
+                                <li class="nav-item">
+                                    <a class="nav-link <?= ($act == 'pay-kereta') ? 'active' : '' ?>" href="<?= base_url('admin/transaksi/kereta') ?>" aria-expanded="false">
                                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Kereta</span>
                                         </div>
                                     </a>
                                     <!-- more inner pages-->
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="../modules/forms/basic/select.html" aria-expanded="false">
+                                <li class="nav-item">
+                                    <a class="nav-link <?= ($act == 'pay-angkutan') ? 'active' : '' ?>" href="<?= base_url('admin/transaksi/angkutan') ?>" aria-expanded="false">
                                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Angkutan Umum</span>
                                         </div>
                                     </a>
@@ -222,13 +226,15 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link dropdown-indicator" href="#pay-laut" data-bs-toggle="collapse" aria-expanded="false" aria-controls="forms">
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-indicator <?= ($act == 'pay-kapal') ? 'active' : '' ?>" href="#pay-laut" data-bs-toggle="collapse" aria-expanded="false" aria-controls="forms">
                                 <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Transportasi Laut</span>
                                 </div>
                             </a>
                             <!-- more inner pages-->
-                            <ul class="nav collapse false" id="pay-laut">
-                                <li class="nav-item"><a class="nav-link" href="../modules/forms/basic/form-control.html" aria-expanded="false">
+                            <ul class="nav collapse <?= ($act == 'pay-kapal') ? 'show' : '' ?>" id="pay-laut">
+                                <li class="nav-item">
+                                    <a class="nav-link <?= ($act == 'pay-kapal') ? 'active' : '' ?>" href="<?= base_url('admin/transaksi/kapal') ?>" aria-expanded="false">
                                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Kapal</span>
                                         </div>
                                     </a>
@@ -236,13 +242,14 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link dropdown-indicator" href="#pay-udara" data-bs-toggle="collapse" aria-expanded="false" aria-controls="forms">
+                        <li class="nav-item"><a class="nav-link dropdown-indicator <?= ($act == 'pay-pesawat') ? 'active' : '' ?>" href="#pay-udara" data-bs-toggle="collapse" aria-expanded="false" aria-controls="forms">
                                 <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Transportasi Udara</span>
                                 </div>
                             </a>
                             <!-- more inner pages-->
-                            <ul class="nav collapse false" id="pay-udara">
-                                <li class="nav-item"><a class="nav-link" href="../modules/forms/basic/form-control.html" aria-expanded="false">
+                            <ul class="nav collapse <?= ($act == 'pay-pesawat') ? 'show' : '' ?>" id="pay-udara">
+                                <li class="nav-item">
+                                    <a class="nav-link <?= ($act == 'pay-pesawat') ? 'active' : '' ?>" href="<?= base_url('admin/transaksi/pesawat') ?>" aria-expanded="false">
                                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Pesawat</span>
                                         </div>
                                     </a>

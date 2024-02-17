@@ -18,6 +18,18 @@ class DashboardController extends BaseController
         $transaksiModel = new TransaksiModel();
         $pesananModel = new PesananModel();
 
+        // Format Rupiah
+        $totalJumlahTransaksi = $transaksiModel->selectSum('jumlah_transaksi')->first()['jumlah_transaksi'];
+        $formattedTotalJumlahTransaksi = 'IDR ' . number_format($totalJumlahTransaksi, 0, ',', '.');
+
+        // Status Pembayaran
+        $countSuccessTransaksi = $transaksiModel->where('status_pembayaran', 'Success')->countAllResults();
+        $countPendingTransaksi = $transaksiModel->where('status_pembayaran', 'Pending')->countAllResults();
+
+        // Role Count
+        $penjual = $userModel->where('role', 2)->countAllResults();
+        $pembeli = $userModel->where('role', 3)->countAllResults();
+
         $data = [
             'title' => 'Dashboard',
             'act' => 'dashboard',
@@ -25,6 +37,11 @@ class DashboardController extends BaseController
             'user' => $userModel->findAll(),
             'transaksi' => $transaksiModel->findAll(),
             'pesanan' => $pesananModel->findAll(),
+            'countTransaksi' => $formattedTotalJumlahTransaksi,
+            'countTransaksiSuccess' => $countSuccessTransaksi,
+            'countTransaksiFail' => $countPendingTransaksi,
+            'countPenjual' => $penjual,
+            'countPembeli' => $pembeli,
         ];
         return view('apps/index', $data);
     }

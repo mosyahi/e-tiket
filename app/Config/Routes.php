@@ -41,6 +41,10 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->match(['get', 'post'], 'payment/update/(:any)', 'MidtransController::update/$1');
     $routes->get('payment/billing/SdzC64i0Nt8mRsEUK6eK1q4npbrh1pDI128sEi35WPCrz97eVB', 'MidtransController::billing');
     // TRANSAKSI
-    $routes->get('transaksi', 'TransaksiController::index');
+    $routes->get('transaksi/bus', 'TransaksiController::bus');
+    $routes->get('transaksi/kereta', 'TransaksiController::kereta');
+    $routes->get('transaksi/angkutan', 'TransaksiController::angkutan');
+    $routes->get('transaksi/kapal', 'TransaksiController::kapal');
+    $routes->get('transaksi/pesawat', 'TransaksiController::pesawat');
     $routes->get('transaksi/delete/(:num)', 'TransaksiController::delete/$1');
 });
