@@ -6,5 +6,5 @@
 <script src="<?= base_url() ?>template/plugins/vendors/fontawesome/all.min.js"></script>
 <script src="<?= base_url() ?>template/plugins/vendors/lodash/lodash.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-<script src="<?= base_url() ?>template/plugins/vendors/list.js/list.min.js"></script>
+<!-- <script src="template/plugins/vendors/list.js/list.min.js"></script> -->
 <script src="<?= base_url() ?>template/plugins/assets/js/theme.js"></script>

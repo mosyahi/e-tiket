@@ -30,16 +30,18 @@ class AuthenticatedController extends BaseController
 
                 if ($user['role'] == '2') {
                     $biodataModel = new BiodataModel();
-                    $biodata = $biodataModel->getSiswaByUserId($user['id_user']);
+                    $biodata = $biodataModel->getBiodataByUserId($user['id_user']);
                     if ($biodata) {
                         $session->set('user_id', $biodata['user_id']);
+                        $session->set('biodata_id', $biodata['id_biodata']);
                     }
                     return redirect()->to('penjual/dashboard')->with('success', 'Login Berhasil.');
                 } elseif ($user['role'] == '3') {
                     $biodataModel = new BiodataModel();
-                    $biodata = $biodataModel->getOrtuByUserId($user['id_user']);
+                    $biodata = $biodataModel->getBiodataByUserId($user['id_user']);
                     if ($biodata) {
                         $session->set('user_id', $biodata['user_id']);
+                        $session->set('biodata_id', $biodata['id_biodata']);
                     }
                     return redirect()->to('pembeli/dashboard')->with('success', 'Login Berhasil.');
                 }
@@ -55,6 +57,15 @@ class AuthenticatedController extends BaseController
         $session = \Config\Services::session();
         $session->setFlashdata('error', 'Email atau Password Anda Salah');
         return redirect()->to('/');
+    }
+
+
+    public function register(): string
+    {
+        $data = [
+            'title' => 'Sign-Up'
+        ];
+        return view('sign/sign-up', $data);
     }
 
 

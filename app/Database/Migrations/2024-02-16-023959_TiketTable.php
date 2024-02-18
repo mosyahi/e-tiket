@@ -54,8 +54,6 @@ class TiketTable extends Migration
         ]);
 
         $this->forge->addKey('id_tiket', true);
-        $this->forge->addForeignKey('user_id', 't_user', 'id_user', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('biodata_id', 't_biodata', 'id_biodata', 'CASCADE', 'CASCADE');
         $this->forge->createTable('t_tiket');
     }
 

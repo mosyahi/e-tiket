@@ -25,28 +25,7 @@
     <div class="card-header">
         <div class="row flex-between-center">
             <div class="col-4 col-sm-auto d-flex align-items-center pe-0">
-                <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0">Orders</h5>
-            </div>
-            <div class="col-8 col-sm-auto ms-auto text-end ps-0">
-                <div class="d-none" id="orders-bulk-actions">
-                    <div class="d-flex">
-                        <select class="form-select form-select-sm" aria-label="Bulk actions">
-                            <option selected="">Bulk actions</option>
-                            <option value="Refund">Refund</option>
-                            <option value="Delete">Delete</option>
-                            <option value="Archive">Archive</option>
-                        </select>
-                        <button class="btn btn-falcon-default btn-sm ms-2" type="button">Apply</button>
-                    </div>
-                </div>
-                <div id="orders-actions">
-                    <button class="btn btn-falcon-default btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#add">
-                        <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span>
-                        <span class="d-none d-sm-inline-block ms-1">Tambah Data</span>
-                    </button>
-                    <!-- <button class="btn btn-falcon-default btn-sm mx-2" type="button"><span class="fas fa-filter" data-fa-transform="shrink-3 down-2"></span><span class="d-none d-sm-inline-block ms-1">Filter</span></button>
-                    <button class="btn btn-falcon-default btn-sm" type="button"><span class="fas fa-external-link-alt" data-fa-transform="shrink-3 down-2"></span><span class="d-none d-sm-inline-block ms-1">Export</span></button> -->
-                </div>
+                <h5 class="fs-0 mb-0 text-nowrap py-2 py-xl-0"><?= $title; ?></h5>
             </div>
         </div>
     </div>
@@ -60,7 +39,7 @@
                         <th class="sort pe-1 align-middle white-space-nowrap" data-sort="address" style="min-width: 12.5rem;">Email</th>
                         <th class="sort pe-1 align-middle white-space-nowrap text-center" data-sort="status">Role</th>
                         <th class="sort pe-1 align-middle white-space-nowrap text-center" data-sort="status">Status</th>
-                        <th class="no-sort"></th>
+                        <!-- <th class="no-sort"></th> -->
                     </tr>
                 </thead>
                 <tbody class="list" id="table-orders-body">
@@ -86,19 +65,19 @@
                                     <span class="badge badge rounded-pill badge-soft-info">Active</span>
                                 <?php endif ?>
                             </td>
-                            <td class="py-2 align-middle white-space-nowrap text-end">
+                            <!-- <td class="py-2 align-middle white-space-nowrap text-end">
                                 <div class="dropdown font-sans-serif position-static">
                                     <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal" type="button" id="order-dropdown-0" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--1"></span></button>
                                     <div class="dropdown-menu dropdown-menu-end border py-0" aria-labelledby="order-dropdown-0">
                                         <div class="bg-white py-2">
-                                            <a class="dropdown-item" href="#" data-bs-target="#edit-<?= $item['id_user'] ?>" data-bs-toggle="modal">Edit</a>
+                                            <a class="dropdown-item" href="#" data-bs-target="#edit-" data-bs-toggle="modal">Edit</a>
                                             <a class="dropdown-item" href="#!">View</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item text-danger" href="#!">Delete</a>
                                         </div>
                                     </div>
                                 </div>
-                            </td>
+                            </td> -->
                         </tr>
                     <?php endforeach ?>
                 </tbody>

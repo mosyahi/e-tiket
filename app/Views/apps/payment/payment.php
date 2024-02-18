@@ -136,46 +136,134 @@
 <?= $this->section('scripting') ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="<?= config('Midtrans')->clientKey ?>"></script>
-<script type="text/javascript">
-    document.getElementById('pay-button').onclick = function() {
-        snap.pay('<?= $snapToken ?>', {
-            onSuccess: function(result) {
-                var orderId = result.order_id;
-                var paymentMethod = result.payment_type;
-                updateTransactionStatus(orderId, 'Success', paymentMethod);
-            },
-            onPending: function(result) {
-                document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                document.getElementById('payment-status').innerHTML = 'Payment is pending...';
+<?php if (session('role') == 1) : ?>
+    <script type="text/javascript">
+        document.getElementById('pay-button').onclick = function() {
+            snap.pay('<?= $snapToken ?>', {
+                onSuccess: function(result) {
+                    var orderId = result.order_id;
+                    var paymentMethod = result.payment_type;
+                    updateTransactionStatus(orderId, 'Success', paymentMethod);
+                },
+                onPending: function(result) {
+                    document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                    document.getElementById('payment-status').innerHTML = 'Payment is pending...';
 
-                updateTransactionStatus('Pending');
-            },
-            onError: function(result) {
-                document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                document.getElementById('payment-status').innerHTML = 'Payment failed!';
+                    updateTransactionStatus('Pending');
+                },
+                onError: function(result) {
+                    document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                    document.getElementById('payment-status').innerHTML = 'Payment failed!';
 
-                updateTransactionStatus('Failed');
-            }
-        });
-    };
+                    updateTransactionStatus('Failed');
+                }
+            });
+        };
 
-    function updateTransactionStatus(orderId, status, paymentMethod) {
-        $.ajax({
-            url: '<?= base_url('admin/payment/update/') ?>' + orderId,
-            method: 'POST',
-            data: {
-                status: status,
-                order_id: orderId,
-                payment_method: paymentMethod
-            },
-            success: function(response) {
-                console.log('Transaction status updated on the server.');
-                window.location.href = '<?= base_url('admin/payment/billing/SdzC64i0Nt8mRsEUK6eK1q4npbrh1pDI128sEi35WPCrz97eVB') ?>';
-            },
-            error: function(error) {
-                console.error('Error updating transaction status:', error);
-            }
-        });
-    }
-</script>
+        function updateTransactionStatus(orderId, status, paymentMethod) {
+            $.ajax({
+                url: '<?= base_url('admin/payment/update/') ?>' + orderId,
+                method: 'POST',
+                data: {
+                    status: status,
+                    order_id: orderId,
+                    payment_method: paymentMethod
+                },
+                success: function(response) {
+                    console.log('Transaction status updated on the server.');
+                    window.location.href = '<?= base_url('admin/payment/billing/SdzC64i0Nt8mRsEUK6eK1q4npbrh1pDI128sEi35WPCrz97eVB') ?>';
+                },
+                error: function(error) {
+                    console.error('Error updating transaction status:', error);
+                }
+            });
+        }
+    </script>
+<?php elseif (session('role') == 2) : ?>
+    <script type="text/javascript">
+        document.getElementById('pay-button').onclick = function() {
+            snap.pay('<?= $snapToken ?>', {
+                onSuccess: function(result) {
+                    var orderId = result.order_id;
+                    var paymentMethod = result.payment_type;
+                    updateTransactionStatus(orderId, 'Success', paymentMethod);
+                },
+                onPending: function(result) {
+                    document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                    document.getElementById('payment-status').innerHTML = 'Payment is pending...';
+
+                    updateTransactionStatus('Pending');
+                },
+                onError: function(result) {
+                    document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                    document.getElementById('payment-status').innerHTML = 'Payment failed!';
+
+                    updateTransactionStatus('Failed');
+                }
+            });
+        };
+
+        function updateTransactionStatus(orderId, status, paymentMethod) {
+            $.ajax({
+                url: '<?= base_url('penjual/payment/update/') ?>' + orderId,
+                method: 'POST',
+                data: {
+                    status: status,
+                    order_id: orderId,
+                    payment_method: paymentMethod
+                },
+                success: function(response) {
+                    console.log('Transaction status updated on the server.');
+                    window.location.href = '<?= base_url('penjual/payment/billing/SdzC64i0Nt8mRsEUK6eK1q4npbrh1pDI128sEi35WPCrz97eVB') ?>';
+                },
+                error: function(error) {
+                    console.error('Error updating transaction status:', error);
+                }
+            });
+        }
+    </script>
+<?php else : ?>
+    <script type="text/javascript">
+        document.getElementById('pay-button').onclick = function() {
+            snap.pay('<?= $snapToken ?>', {
+                onSuccess: function(result) {
+                    var orderId = result.order_id;
+                    var paymentMethod = result.payment_type;
+                    updateTransactionStatus(orderId, 'Success', paymentMethod);
+                },
+                onPending: function(result) {
+                    document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                    document.getElementById('payment-status').innerHTML = 'Payment is pending...';
+
+                    updateTransactionStatus('Pending');
+                },
+                onError: function(result) {
+                    document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                    document.getElementById('payment-status').innerHTML = 'Payment failed!';
+
+                    updateTransactionStatus('Failed');
+                }
+            });
+        };
+
+        function updateTransactionStatus(orderId, status, paymentMethod) {
+            $.ajax({
+                url: '<?= base_url('pembeli/payment/update/') ?>' + orderId,
+                method: 'POST',
+                data: {
+                    status: status,
+                    order_id: orderId,
+                    payment_method: paymentMethod
+                },
+                success: function(response) {
+                    console.log('Transaction status updated on the server.');
+                    window.location.href = '<?= base_url('pembeli/payment/billing/SdzC64i0Nt8mRsEUK6eK1q4npbrh1pDI128sEi35WPCrz97eVB') ?>';
+                },
+                error: function(error) {
+                    console.error('Error updating transaction status:', error);
+                }
+            });
+        }
+    </script>
+<?php endif ?>
 <?= $this->endSection() ?>

@@ -40,9 +40,6 @@ class PemesananTable extends Migration
         ]);
 
         $this->forge->addKey('id_pemesanan', true);
-        $this->forge->addForeignKey('user_id', 't_user', 'id_user', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('biodata_id', 't_biodata', 'id_biodata', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('tiket_id', 't_tiket', 'id_tiket', 'CASCADE', 'CASCADE');
         $this->forge->createTable('t_pemesanan');
     }
 

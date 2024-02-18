@@ -13,12 +13,12 @@
                                 </div>
                                 <!--/.bg-holder-->
 
-                                <div class="z-index-1 position-relative"><a class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder" href="<?= current_url() ?>">falcon</a>
-                                    <p class="opacity-75 text-white">With the power of Falcon, you can now focus only on functionaries for your digital products, while leaving the UI design on us!</p>
+                                <div class="z-index-1 position-relative"><a class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder" href="<?= current_url() ?>">M-Tick</a>
+                                    <p class="opacity-75 text-white">Sistem Informasi Marketplace Manajemen Pemesanan E-Ticket Berbasis Website!</p>
                                 </div>
                             </div>
                             <div class="mt-3 mb-4 mt-md-4 mb-md-5 light">
-                                <p class="text-white">Don't have an account?<br><a class="text-decoration-underline link-light" href="<?= base_url('signup') ?>">Sign-Up Now!</a></p>
+                                <p class="text-white">Anda belum memiliki akun?<br><a class="text-decoration-underline link-light" href="<?= base_url('register') ?>">Sign-Up Disini!</a></p>
                                 <p class="mb-0 mt-4 mt-md-5 fs--1 fw-semi-bold text-white opacity-75">&copy; <?= date('Y') ?><a class="text-white" href="#!"> M-Tick Indonesia</a></p>
                             </div>
                         </div>

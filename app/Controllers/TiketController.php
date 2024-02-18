@@ -128,7 +128,7 @@ class TiketController extends BaseController
 
         $tiket->update($id, $data);
 
-        session()->setFlashdata('success', 'Data tiket berhasil di tambahkan!');
+        session()->setFlashdata('success', 'Data tiket berhasil di perbaharui!');
         return redirect()->back();
     }
 

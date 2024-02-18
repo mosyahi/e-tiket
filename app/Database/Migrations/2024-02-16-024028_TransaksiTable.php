@@ -50,9 +50,6 @@ class TransaksiTable extends Migration
         ]);
 
         $this->forge->addKey('id_transaksi', true);
-        $this->forge->addForeignKey('user_id', 't_user', 'id_user', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('pemesanan_id', 't_pemesanan', 'id_pemesanan', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('tiket_id', 't_tiket', 'id_tiket', 'CASCADE', 'CASCADE');
         $this->forge->createTable('t_transaksi');
     }
 
