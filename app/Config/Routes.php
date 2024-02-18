@@ -10,6 +10,8 @@ $routes->post('login', 'AuthenticatedController::login');
 $routes->get('register', 'AuthenticatedController::register');
 $routes->post('register', 'SignUpController::index');
 $routes->get('logout', 'AuthenticatedController::logout');
+$routes->get('verifikasi-otp', 'SignUpController::verif');
+$routes->post('verifikasi-otp', 'SignUpController::verif');
 
 $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('dashboard', 'DashboardController::index');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2024 at 09:37 AM
+-- Generation Time: Feb 18, 2024 at 04:40 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -46,7 +46,8 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 (2, '2024-02-16-023958', 'App\\Database\\Migrations\\CreateBiodataTable', 'default', 'App', 1708052144, 1),
 (3, '2024-02-16-023959', 'App\\Database\\Migrations\\TiketTable', 'default', 'App', 1708052145, 1),
 (4, '2024-02-16-024011', 'App\\Database\\Migrations\\PemesananTable', 'default', 'App', 1708052144, 1),
-(7, '2024-02-16-024028', 'App\\Database\\Migrations\\TransaksiTable', 'default', 'App', 1708155182, 2);
+(7, '2024-02-16-024028', 'App\\Database\\Migrations\\TransaksiTable', 'default', 'App', 1708155182, 2),
+(8, '2024-02-18-135826', 'App\\Database\\Migrations\\CreateOtpTable', 'default', 'App', 1708266621, 3);
 
 -- --------------------------------------------------------
 
@@ -75,7 +76,21 @@ INSERT INTO `t_biodata` (`id_biodata`, `user_id`, `no_telepon`, `nama_lengkap`, 
 (12, 7, '089888773674', 'Ahmad Rizky', '2000-02-12', 'Bogor', '327401130600023', '1708097509_b7602799d3934f1488d6.png', '2024-02-16 22:31:49'),
 (13, 8, '08982828733', 'Alvi Ridho', '2000-06-12', 'Testing', '327401130600023', '1708098090_47023f42369db644216d.png', '2024-02-16 22:41:30'),
 (14, 9, '08988889898', 'Web Crafser', '2000-12-12', 'Cirebon', '327401130600023', '1708109238_1797bc08931964f6cc0e.png', '2024-02-17 01:47:18'),
-(15, 10, '08989889898', 'Mosyahizuku', '1999-12-12', 'Tasikmalaya', '32323232323232323', '1708109275_a596c786a48b0282987d.png', '2024-02-17 01:47:55');
+(15, 10, '08989889898', 'Mosyahizuku', '1999-12-12', 'Tasikmalaya', '32323232323232323', '1708109275_a596c786a48b0282987d.png', '2024-02-17 01:47:55'),
+(23, 38, '0888877888911', 'Reyhan', '1999-12-12', 'Crbn', '3274011306000231122', '1708270760_3ba0ec3c541111ac8905.png', '2024-02-18 22:39:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_otp`
+--
+
+CREATE TABLE `t_otp` (
+  `id_otp` int(5) UNSIGNED NOT NULL,
+  `otp` varchar(10) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -196,7 +211,8 @@ INSERT INTO `t_user` (`id_user`, `nama`, `email`, `password`, `role`, `status`, 
 (10, 'Mosyahizuku', 'mosyahi@gmail.com', '$2y$10$mkVWb7P.vx5ie30Rh3HHnebZGoz.zWwaNPikL9XkzHRqbpHxt780q', '2', '1', '2024-02-17 01:47:55'),
 (11, 'Testing', 'mosyahichannel@gmail.com', '$2y$10$Tngy5U8nLX.3CJi.3eI12.Dqc8KKhuPOgpzC78lOkaD37G3IesIYm', '2', '1', '2024-02-17 21:02:04'),
 (12, 'Testing', 'mosyahichannel@gmail.com', '$2y$10$2y6r.Os7rkL6Md5qO7iHoO8BCUsdMNs/CReRuzKJSPqX/.qNgPDuO', '2', '1', '2024-02-17 21:02:26'),
-(14, 'Testing', 'testingg@gmail.com', '$2y$10$bgFcChL3h/OCmNhTEOQjNuCtd2Mpag6HW3IlFvB0Mg9hg2qv4OepC', '2', '1', '2024-02-18 12:54:14');
+(14, 'Testing', 'testingg@gmail.com', '$2y$10$bgFcChL3h/OCmNhTEOQjNuCtd2Mpag6HW3IlFvB0Mg9hg2qv4OepC', '2', '1', '2024-02-18 12:54:14'),
+(38, 'Reyhan', 'mosyahizuku@gmail.com', '$2y$10$dovj9ibtTUH0uvhQ1QTnm.xNvHEITKXQrQQ/sqYnznQHiFxbd5beq', '3', '1', '2024-02-18 22:39:32');
 
 --
 -- Indexes for dumped tables
@@ -214,6 +230,12 @@ ALTER TABLE `migrations`
 ALTER TABLE `t_biodata`
   ADD PRIMARY KEY (`id_biodata`),
   ADD KEY `t_biodata_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `t_otp`
+--
+ALTER TABLE `t_otp`
+  ADD PRIMARY KEY (`id_otp`);
 
 --
 -- Indexes for table `t_pemesanan`
@@ -255,13 +277,19 @@ ALTER TABLE `t_user`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `t_biodata`
 --
 ALTER TABLE `t_biodata`
-  MODIFY `id_biodata` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_biodata` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `t_otp`
+--
+ALTER TABLE `t_otp`
+  MODIFY `id_otp` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `t_pemesanan`
@@ -285,7 +313,7 @@ ALTER TABLE `t_transaksi`
 -- AUTO_INCREMENT for table `t_user`
 --
 ALTER TABLE `t_user`
-  MODIFY `id_user` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_user` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- Constraints for dumped tables
