@@ -289,8 +289,7 @@ class SignUpController extends BaseController
             </table>
         </div>
         <div class="footer">
-            <p><a href="https://www.instagram.com/"><img src="https://seeklogo.com/images/I/instagram-logo-1494D6FE63-seeklogo.com.png" alt="Instagram" class="social-icon"> Instagram</a></p>
-            <p><a href="https://example.com"><img src="https://freepngimg.com/thumb/whatsapp/4-2-whatsapp-transparent.png" alt="WhatsApp" class="social-icon"> WhatsApp</a></p>
+            <p>&copy; 2024 M-Tick Indonesia</p>
         </div>
     </div>
 </body>

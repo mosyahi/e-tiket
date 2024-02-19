@@ -79,7 +79,7 @@
                                         <textarea class="form-control" name="alamat" id="basic-form-textarea" rows="3" placeholder="alamat Lengkap" reuired></textarea>
                                     </div>
                                     <div class="mb-3">
-                                        <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Log in</button>
+                                        <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Submit</button>
                                     </div>
                                 </form>
                                 <!-- <div class="position-relative mt-4">

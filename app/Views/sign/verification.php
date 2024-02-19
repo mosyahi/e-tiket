@@ -2,14 +2,14 @@
 <?= $this->section('content') ?>
 
 <div class="row flex-center min-vh-100 py-6 text-center">
-    <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4"><a class="d-flex flex-center mb-4" href="../../../index.html"><img class="me-2" src="../../../assets/img/icons/spot-illustrations/falcon.png" alt="" width="58" /><span class="font-sans-serif fw-bolder fs-5 d-inline-block">falcon</span></a>
+    <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4"><a class="d-flex flex-center mb-4" href="#"><img class="me-2" src="<?= base_url() ?>template/plugins/assets/img/icons/spot-illustrations/falcon.png" alt="" width="58" /><span class="font-sans-serif fw-bolder fs-5 d-inline-block">M-Tick</span></a>
         <div class="card">
             <div class="card-body p-4 p-sm-5">
                 <h5 class="mb-0">Verifikasi OTP Email</h5><small>Silahkan cek email anda dan masukkan kode OTP kehalaman ini.</small>
                 <form id="twoStepsForm" class="mt-4" action="<?= base_url('verifikasi-otp') ?>" method="POST">
                     <?= csrf_field() ?>
                     <?= $this->include('notification/alerts') ?>
-                    <input class="form-control" type="text" id="otp" placeholder="Kode OTP" name="otp" />
+                    <input class="form-control" type="text" id="otp" placeholder="Kode OTP" name="otp" required />
                     <small class="formtext text-muted" id="countdown-message"> Kode OTP akan expired dalam waktu <span id="countdown"></span> menit</small>
                     <div class="mb-3"></div>
                     <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Verifikasi</button>
