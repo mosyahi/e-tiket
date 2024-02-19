@@ -141,4 +141,4 @@ database.default.port = 3306
 # CURLRequest
 #--------------------------------------------------------------------
 
-# curlrequest.shareOptions = false
+# curlrequest.shareOptions = true
